@@ -1,4 +1,4 @@
-tonto
+Tonto.js 0.0.0
 =====
 
-Tonto.js: A Node.js Apache Config File Generator
+A Node.js Apache Config File Generator (In Development)
