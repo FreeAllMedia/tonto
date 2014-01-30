@@ -10,7 +10,7 @@
     }
   ],
   "scripts": {
-    "test": "mocha -u bdd -w ./tests/* -R spec"
+    "test": "mocha -u bdd ./tests/* -R spec"
   },
   "main": "./lib/tonto.js",
   "dependencies" : {
