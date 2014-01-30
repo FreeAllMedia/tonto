@@ -15,31 +15,6 @@ describe('TontoDirectiveCollection()', function () {
 		directiveTwo = new TontoDirective('RewriteCond', '%{HTTPS} off');
 	});
 
-	describe('.virtualHost(address, port, directiveSetter)', function () {
-
-		var address,
-			port,
-			directiveSetter;
-
-		beforeEach(function () {
-			address = 'somehost.com';
-			port = 80;
-			directiveSetter = function (directives) {
-				directives.push(directiveOne);
-			};
-		});
-
-		it('should add a virtual host directive to the directive collection', function () {
-			collection.virtualHost(address, port, directiveSetter);
-			collection.all()[0].name.should.equal('VirtualHost');
-		});
-
-		it('should return `this`', function () {
-			collection.virtualHost(address, port, directiveSetter).should.equal(collection);
-		});
-
-	});
-
 	describe('.forEach(iteratorFunction)', function () {
 
 		beforeEach(function () {
@@ -70,7 +45,7 @@ describe('TontoDirectiveCollection()', function () {
 
 	});
 
-	describe('.toString()', function () {
+	describe('.render()', function () {
 
 		beforeEach(function () {
 			collection.push(directiveOne);
@@ -78,17 +53,89 @@ describe('TontoDirectiveCollection()', function () {
 		});
 
 		it('should return all Directive strings, concatenated by two newlines', function () {
-			collection.toString().should.equal('RewriteEngine On\nRewriteCond %{HTTPS} off');
+			collection.render().should.equal('RewriteEngine On\nRewriteCond %{HTTPS} off');
 		});
 
 	});
 
+	describe('.virtualHost(address, port, directiveSetter)', function () {
+
+		var address,
+			port,
+			directiveSetter;
+
+		beforeEach(function () {
+			address = '10.10.9.1';
+			port = 80;
+			directiveSetter = function (directives) {
+				directives.push(directiveOne);
+			};
+			collection.virtualHost(address, port, directiveSetter);
+		});
+
+		it('should add a virtual host directive to the directive collection', function () {
+			collection.all()[0].name.should.equal('VirtualHost');
+		});
+
+		it('should render a valid virtual host directive', function () {
+			collection.render().should.equal('<VirtualHost 10.10.9.1:80>\n\t' + directiveOne.render() + '\n</VirtualHost>');
+		});
+
+		it('should return `this` to enable chaining', function () {
+			collection.virtualHost(address, port, directiveSetter).should.equal(collection);
+		});
+
+	});
+
+	describe('.serverName(address)', function () {
+
+		var address;
+
+		beforeEach(function () {
+			address = 'somehost.com';
+			collection.serverName(address);
+		});
+
+		it('should render a valid virtual host directives', function () {
+			collection.render().should.equal('ServerName ' + address);
+		});
+
+		it('should add a ServerName directive to the directive collection', function () {
+			collection.all()[0].name.should.equal('ServerName');
+		});
+
+		it('should return `this` to enable chaining', function () {
+			collection.serverName(address).should.equal(collection);
+		});
+
+	});
+
+	describe('.header(value)', function () {
+
+		var value;
+
+		beforeEach(function () {
+			value = 'set Access-Control-Allow-Origin "*"';
+			collection.header(value);
+		});
+
+		it('should render a valid virtual host directives', function () {
+			collection.render().should.equal('Header ' + value);
+		});
+
+		it('should add a Header directive to the directive collection', function () {
+			collection.all()[0].name.should.equal('Header');
+		});
+
+		it('should return `this` to enable chaining', function () {
+			collection.header(value).should.equal(collection);
+		});
+
+	});
+
+	
+
 });
-
-	// function virtualHost(address, port, directiveSetter) {
-
-	//     directives.virtualHost(address, port, directiveSetter);
-	// }
 
 	// function serverName(value) {}
 
