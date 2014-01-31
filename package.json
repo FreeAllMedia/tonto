@@ -1,37 +1,38 @@
 {
-	"name": "tonto",
-	"version": "0.0.0",
-	"author": "FreeAllMedia, LLC <fam-operations@freeallmedia.com>",
-	"description": "Tonto.js: Apache Config File Generator",
-	"contributors": [
-		{
-			"name": "Dallas John Slieker",
-			"email": "dslieker@freeallmedia.com"
-		}
-	],
-	"scripts": {
-		"test": "mocha"
-	},
-	"main": "./lib/tonto.js",
-	"dependencies": {
-		"methodical": "0.0.x",
-		"is-js": "0.1.x"
-	},
-	"config": {
-		"blanket": {
-			"pattern": [
-				"src"
-			]
-		}
-	},
-	"devDependencies": {
-		"mocha": "1.13.x",
-		"should": "2.0.x",
-		"sinon": "1.7.x",
-		"rewire": "2.0.x",
-		"supertest": "0.8.x",
-		"grunt": "~0.4.2",
-		"grunt-mocha-cov": "~0.2.0"
-	},
-	"license": "GPLv3"
+  "name": "tonto",
+  "version": "0.0.0",
+  "author": "FreeAllMedia, LLC <fam-operations@freeallmedia.com>",
+  "description": "Tonto.js: Apache Config File Generator",
+  "contributors": [
+    {
+      "name": "Dallas John Slieker",
+      "email": "dslieker@freeallmedia.com"
+    }
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "main": "./lib/tonto.js",
+  "dependencies": {
+    "methodical": "0.0.x",
+    "is-js": "0.1.x"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [
+        "src"
+      ]
+    }
+  },
+  "devDependencies": {
+    "mocha": "1.13.x",
+    "should": "2.0.x",
+    "sinon": "1.7.x",
+    "rewire": "2.0.x",
+    "supertest": "0.8.x",
+    "grunt": "~0.4.x",
+    "grunt-mocha-cov": "~0.2.x",
+    "grunt-cli": "~0.1.x"
+  },
+  "license": "GPLv3"
 }
