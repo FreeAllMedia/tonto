@@ -23,7 +23,7 @@
   //"maxstatements": 20,
   "browser": true,
   "esnext": true,
-  "globals": {"describe": true, "_": true},
+  "globals": {"describe": true, "_": true, "it": true, "beforeEach": true, "before": true},
   "globalstrict": false,
   "white": true,
   "smarttabs": true,

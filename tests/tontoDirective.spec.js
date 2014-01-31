@@ -5,6 +5,8 @@ var should = require('should'),
 
 describe('TontoDirective(name, value, directives)', function () {
 
+	'use strict';
+
 	var name,
 		value,
 		directives,
