@@ -20,7 +20,7 @@
   "config": {
     "blanket": {
       "pattern": [
-        "lib"
+        "tonto/lib"
       ]
     }
   },
