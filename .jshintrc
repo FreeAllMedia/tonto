@@ -20,7 +20,7 @@
   "trailing": true,
   "maxparams": 4,
   "maxdepth": 3,
-  //"maxstatements": 20,
+  "maxstatements": 20,
   "browser": true,
   "esnext": true,
   "globals": {"describe": true, "_": true, "it": true, "beforeEach": true, "before": true},

@@ -1,5 +1,9 @@
 var should = require('should'),
 	sinon = require('sinon'),
+	yaml = require('js-yaml'),
+	path = require('path'),
+	fs = require('fs'),
+	changeCase = require('change-case'),
 	TontoDirective = require('../lib/tontoDirective.js'),
 	TontoDirectiveCollection = require('../lib/tontoDirectiveCollection.js');
 
@@ -60,111 +64,77 @@ describe('TontoDirectiveCollection()', function () {
 
 	});
 
-	describe('.virtualHost(address, port, directiveSetter)', function () {
+	describe('Dynamic Function', function () {
 
-		var address,
-			port,
-			directiveSetter;
+		var directivesFilePath = path.join(__dirname, '../apacheDirectives.yml'),
+			directivesFileContents = fs.readFileSync(directivesFilePath).toString(),
+			apacheDirectives = yaml.load(directivesFileContents),
+			groupDirectives = apacheDirectives.filter(function (directiveName) { return (directiveName.indexOf('<') !== -1); }),
+			soloDirectives = apacheDirectives.filter(function (directiveName) { return (directiveName.indexOf('<') === -1); }),
+			value = 'Some Value';
 
-		beforeEach(function () {
-			address = '10.10.9.1';
-			port = 80;
-			directiveSetter = function (directives) {
-				directives.push(directiveOne);
-			};
-			collection.virtualHost(address, port, directiveSetter);
+		describe('Group Directives', function () {
+
+			var subDirectiveSetter;
+
+			beforeEach(function () {
+				subDirectiveSetter = function (subDirectives) {
+					subDirectives.push(directiveOne);
+				};
+			});
+
+			groupDirectives.forEach(function (directiveName) {
+
+				var functionName = changeCase.camelCase(directiveName.replace(/[<>]/, ''));
+
+				describe(functionName + '(value, subDirectiveSetter)', function () {
+
+					it('should exist on the collection', function () {
+						collection.should.have.ownProperty(functionName);
+					});
+
+					it('should add a ' + directiveName + ' directive to the collection', function () {
+						collection[functionName](value, subDirectiveSetter);
+						collection.all()[0].name.should.equal(directiveName);
+					});
+
+					it('should return a copy of the collection for chaining', function () {
+						collection[functionName](value, subDirectiveSetter).should.equal(collection);
+					});
+
+				});
+
+			});
+
 		});
 
-		it('should add a virtual host directive to the directive collection', function () {
-			collection.all()[0].name.should.equal('VirtualHost');
-		});
+		describe('Solo Directives', function () {
 
-		it('should render a valid virtual host directive', function () {
-			collection.render().should.equal('<VirtualHost 10.10.9.1:80>\n\t' + directiveOne.render() + '\n</VirtualHost>');
-		});
+			soloDirectives.forEach(function (directiveName) {
 
-		it('should return `this` to enable chaining', function () {
-			collection.virtualHost(address, port, directiveSetter).should.equal(collection);
+				var functionName = changeCase.camelCase(directiveName.replace(/[<>]/, ''));
+
+				describe(functionName + '(value)', function () {
+
+					it('should exist on the collection', function () {
+						collection.should.have.ownProperty(functionName);
+					});
+
+					it('should add a ' + directiveName + ' directive to the collection', function () {
+						collection[functionName](value);
+						collection.all()[0].name.should.equal(directiveName);
+					});
+
+					it('should return a copy of the collection for chaining', function () {
+						collection[functionName](value).should.equal(collection);
+					});
+
+				});
+
+			});
+
 		});
 
 	});
-
-	describe('.serverName(address)', function () {
-
-		var address;
-
-		beforeEach(function () {
-			address = 'somehost.com';
-			collection.serverName(address);
-		});
-
-		it('should render a valid virtual host directives', function () {
-			collection.render().should.equal('ServerName ' + address);
-		});
-
-		it('should add a ServerName directive to the directive collection', function () {
-			collection.all()[0].name.should.equal('ServerName');
-		});
-
-		it('should return `this` to enable chaining', function () {
-			collection.serverName(address).should.equal(collection);
-		});
-
-	});
-
-	describe('.header(value)', function () {
-
-		var value;
-
-		beforeEach(function () {
-			value = 'set Access-Control-Allow-Origin "*"';
-			collection.header(value);
-		});
-
-		it('should render a valid virtual host directives', function () {
-			collection.render().should.equal('Header ' + value);
-		});
-
-		it('should add a Header directive to the directive collection', function () {
-			collection.all()[0].name.should.equal('Header');
-		});
-
-		it('should return `this` to enable chaining', function () {
-			collection.header(value).should.equal(collection);
-		});
-
-	});
-
-	
 
 });
-
-	// function serverName(value) {}
-
-	// function header(value) {}
-
-	// function directory(directoryPath, directivesSetter) {}
-
-	// function addOutputFilterByType(value) {}
-
-	// function browserMatch(value) {}
-
-	// function options(value) {}
-
-	// function allowOverride(value) {}
-
-	// function order(value) {}
-
-	// function allow(value) {}
-
-	// function proxyPass(path, url) {}
-
-	// function proxyPassReverse(path, url) {}
-
-	// function proxyPassMatch(path, url) {}
-
-	// function sslCertificateFile(certificatePath) {}
-
-	// function sslKeyFile(certificatePath) {}
-
-	// function sslChainFile(certificatePath) {}
