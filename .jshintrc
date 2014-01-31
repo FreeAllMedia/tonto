@@ -1,8 +1,5 @@
 {
-  // Details: https://github.com/victorporof/Sublime-JSHint#using-your-own-jshintrc-options
-  // Example: https://github.com/jshint/jshint/blob/master/examples/.jshintrc
-  // Documentation: http://www.jshint.com/docs/
-  "bitwise": true,
+  "bitwise": "true",
   "camelcase": true,
   "curly": true,
   "eqeqeq": true,
@@ -23,13 +20,12 @@
   "trailing": true,
   "maxparams": 4,
   "maxdepth": 3,
-  "maxstatements": 20,
+  //"maxstatements": 20,
   "browser": true,
   "esnext": true,
-  "globals": {"describe": true, FB": true, "FAM": true, "define": true, "_": true, "Backbone": true},
+  "globals": {"describe": true, "_": true},
   "globalstrict": false,
   "white": true,
   "smarttabs": true,
-  "node": true,
-  "browser": true
+  "node": true
 }

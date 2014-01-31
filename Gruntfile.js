@@ -1,6 +1,14 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
+
+	'use strict';
 
 	grunt.initConfig({
+		jshint: {
+			all: ['Gruntfile.js', 'lib/*', 'test/*'],
+			options: {
+				jshintrc: './.jshintrc'
+			}
+		},
 		mochacov: {
 			coverage: {
 				options: {
@@ -19,8 +27,9 @@ module.exports = function(grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-mocha-cov');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
 
-	grunt.registerTask('travis', ['test', 'mochacov:coverage']);
+	grunt.registerTask('travis', ['jshint', 'test', 'mochacov:coverage']);
 	grunt.registerTask('test', ['mochacov:test']);
 
 };

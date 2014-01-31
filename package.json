@@ -32,7 +32,8 @@
     "supertest": "0.8.x",
     "grunt": "~0.4.x",
     "grunt-mocha-cov": "~0.2.x",
-    "grunt-cli": "~0.1.x"
+    "grunt-cli": "~0.1.x",
+    "grunt-contrib-jshint": "~0.8.0"
   },
   "license": "GPLv3"
 }
