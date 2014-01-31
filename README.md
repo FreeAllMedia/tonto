@@ -7,6 +7,7 @@
 ```
 [![Build Status](https://travis-ci.org/FreeAllMedia/tonto.png?branch=master)](https://travis-ci.org/FreeAllMedia/tonto)
 [![Coverage Status](https://coveralls.io/repos/FreeAllMedia/tonto/badge.png)](https://coveralls.io/r/FreeAllMedia/tonto)
+[![Code Climate](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/badges/8211b5ff104e1d7c1d51/gpa.png)](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/feed)
 
 ## Generate Apache Config Files With Tonto.js!
 
@@ -29,9 +30,9 @@ The Tonto (Dilzhę́’é) Apache people are one of the Western Apache groups fr
 ```javascript
 var tonto = new Tonto();
 
-tonto.virtualHost('*', 443, function (virtualHostDirectives) {
+tonto.virtualHost('*', 443, function (subDirectives) {
 
-    virtualHostDirectives
+    subDirectives
         .serverName('somesite.com')
         .header('set Access-Control-Allow-Origin "*"')
         
@@ -55,9 +56,9 @@ tonto.virtualHost('*', 443, function (virtualHostDirectives) {
         
 });
 
-tonto.virtualHost('*', 80, function (virtualHostDirectives) {
+tonto.virtualHost('*', 80, function (subDirectives) {
 
-    virtualHostDirectives
+    subDirectives
         .serverName('somesite.com')
         .rewriteEngine('On')
         .rewriteBase('/myapp')
@@ -66,7 +67,7 @@ tonto.virtualHost('*', 80, function (virtualHostDirectives) {
     
 });
 
-var configFileContents = tonto.toString();
+var configFileContents = tonto.render();
 
 ```
                                                              
