@@ -13,16 +13,16 @@
 
 ### Wait.. What? Why?!
 
-Because sometimes we want to automate the generation of apache config files to a greater degree than with simple templating.
+To dynamically generate Apache config files using native javascript, for cases where maintaining templates is no longer desireable.
 
 ### The Tonto Name
 
-The Tonto (Dilzhę́’é) Apache people are one of the Western Apache groups from North America. Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors.
+The Tonto (Dilzhę́’é) people are one of the Western Apache groups from North America. Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors.
 
 ### Use Case Examples
 
 1. Server hosts can write a deployment script with Tonto.js to easily customize apache config files for new machines.
-2. Automate detection of an application's requirements with a custom script, then generate a custom apache config based upon those requirements with Tonto.js!
+2. Wrap this library with your own to provide an easy interface to generate all of your project's apache configs.
 3. Take your wife out for a nice steak dinner, then to a show that *she* wants to see. Tell her it was all made possible because you're smart and made time for her with TONTO.JS!
 
 ## Using Tonto.js
