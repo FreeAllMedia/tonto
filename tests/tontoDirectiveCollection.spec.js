@@ -3,6 +3,8 @@ var should = require('should'),
 	yaml = require('js-yaml'),
 	path = require('path'),
 	fs = require('fs'),
+	util = require('util'),
+	Interface = require('methodical'),
 	changeCase = require('change-case'),
 	TontoDirective = require('../lib/tontoDirective.js'),
 	TontoDirectiveCollection = require('../lib/tontoDirectiveCollection.js');
@@ -96,6 +98,26 @@ describe('TontoDirectiveCollection()', function () {
 					it('should add a ' + directiveName + ' directive to the collection', function () {
 						collection[functionName](value, subDirectiveSetter);
 						collection.all()[0].name.should.equal(directiveName);
+					});
+
+					describe('subDirectiveSetter(tontoDirectiveCollection)', function () {
+
+						var subDirectiveSetterSpy;
+
+						beforeEach(function () {
+							subDirectiveSetterSpy = sinon.spy(subDirectiveSetter);
+						});
+
+						it('should call subDirectiveSetter with a sub-directive TontoDirectiveCollection as the only parameter', function () {
+							collection[functionName](value, subDirectiveSetterSpy);
+							subDirectiveSetterSpy.args[0][0].should.be.instanceOf(TontoDirectiveCollection);
+						});
+
+						it('should call subDirectiveSetter only once', function () {
+							collection[functionName](value, subDirectiveSetterSpy);
+							subDirectiveSetterSpy.calledOnce.should.be.true;
+						});
+
 					});
 
 					it('should return a copy of the collection for chaining', function () {

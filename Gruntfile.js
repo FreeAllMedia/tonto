@@ -9,6 +9,18 @@ module.exports = function (grunt) {
 				jshintrc: './.jshintrc'
 			}
 		},
+		complexity: {
+			generic: {
+				src: ['lib/*'],
+				options: {
+					breakOnErrors: true,
+					errorsOnly: false,               // show only maintainability errors
+					cyclomatic: [3, 7, 12],          // or optionally a single value, like 3
+					halstead: [8, 13, 20],           // or optionally a single value, like 8
+					maintainability: 100
+				}
+			}
+		},
 		mochacov: {
 			coverage: {
 				options: {
@@ -28,8 +40,9 @@ module.exports = function (grunt) {
 
 	grunt.loadNpmTasks('grunt-mocha-cov');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-complexity');
 
-	grunt.registerTask('travis', ['jshint', 'test', 'mochacov:coverage']);
+	grunt.registerTask('travis', ['jshint', 'test', 'complexity', 'mochacov:coverage']);
 	grunt.registerTask('test', ['mochacov:test']);
 
 };

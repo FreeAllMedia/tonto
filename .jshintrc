@@ -27,5 +27,6 @@
   "globalstrict": false,
   "white": true,
   "smarttabs": true,
-  "node": true
+  "node": true,
+  "expr": true
 }
