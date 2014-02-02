@@ -8,41 +8,43 @@ describe('TontoDirective(name, value, directives)', function () {
 	'use strict';
 
 	var name,
-		value,
-		directives,
-		directive;
+			value,
+			subDirectives,
+			directive;
 
 	beforeEach(function () {
-		name = 'VirtualHost';
-		value = '*:80';
-		directives = null;
+		name = 'Order';
+		value = 'allow, deny';
+		subDirectives = null;
+		directive = new TontoDirective(name, value);
 	});
 
 	describe('.render', function () {
-		describe('with directives', function () {
+
+		describe('with sub-directives', function () {
 
 			beforeEach(function () {
-				directives = new TontoDirectiveCollection();
-				directives.push(new TontoDirective('RewriteEngine', 'On'));
-				directives.push(new TontoDirective('RewriteCond', '%{HTTPS} off'));
-				directive = new TontoDirective(name, value, directives);
+				name = 'Directory';
+				value = '/some/directory/path/';
+				subDirectives = new TontoDirectiveCollection();
+				subDirectives.order('allow, deny');
+				directive = new TontoDirective(name, value, subDirectives);
 			});
 
-			it('should generate as an SGML-style tag with each directive\'s properly tabbed .render() for content', function () {
-				directive.render().should.equal('<VirtualHost *:80>\n\tRewriteEngine On\n\tRewriteCond %{HTTPS} off\n</VirtualHost>');
+			it('should render as an SGML-style tag with each sib-directive\'s properly tabbed .render() for content', function () {
+				directive.render().should.equal('<Directory /some/directory/path/>\n\tOrder allow, deny\n</Directory>');
 			});
 
 		});
 
-		describe('without options.directives', function () {
-			beforeEach(function () {
-				directive = new TontoDirective(name, value, directives);
+		describe('without sub-directives', function () {
+
+			it('should render as solo directive', function () {
+				directive.render().should.equal(name + ' ' + value);
 			});
 			
-			it('should generate as a non-block directive', function () {
-				directive.render().should.equal('VirtualHost *:80');
-			});
 		});
+
 	});
 
 });

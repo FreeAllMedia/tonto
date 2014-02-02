@@ -13,33 +13,37 @@
 
 ### Wait.. What? Why?!
 
-To dynamically generate Apache config files using native javascript, for cases where maintaining templates is no longer desireable.
+Because sometimes, templates either don't cut it, or you get sick of setting up templates. Behold: Tonto.js with support for 591 apache directives, without leaving the comfort of your Javascript couch.
 
 ### The Tonto Name
 
-The Tonto (Dilzhę́’é) people are one of the Western Apache groups from North America. Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors.
+The [Tonto (Dilzhę́’é) people](http://itcaonline.com/?page_id=1183) are one of the Western Apache groups from North America. Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors.
 
 ### Use Case Examples
 
 1. Server hosts can write a deployment script with Tonto.js to easily customize apache config files for new machines.
-2. Wrap this library with your own to provide an easy interface to generate all of your project's apache configs.
-3. Take your wife out for a nice steak dinner, then to a show that *she* wants to see. Tell her it was all made possible because you're smart and made time for her with TONTO.JS!
+2. Wrap this library with your own to provide an easy interface for generating all of your project's apache configs. 
+3. Take your wife out for a nice steak dinner, then to a show that *she* wants to see. Tell her it was all made possible because you're smart and made time for her with Tonto.js.
 
 ## Using Tonto.js
 
 ```javascript
-var tonto = new Tonto();
 
-tonto.virtualHost('*', 443, function (subDirectives) {
+var Tonto = require('./'),
+ tonto = new Tonto();
+
+tonto.virtualHost('*:443', function (subDirectives) {
+
+ 'use strict';
 
     subDirectives
         .serverName('somesite.com')
         .header('set Access-Control-Allow-Origin "*"')
-        
+
         .directory('/var/node/somesite/current/public/', function (directoryDirectives) {
             directoryDirectives
                 .addOutputFilterByType('DEFLATE text/html text/plain text/xml text/css text/javascript application/x-javascript')
-                .browserMatch('\bMSIE\s6 no-gzip')
+                .browserMatch('\\bMSIE\\s6 no-gzip')
                 .options('FollowSymLinks')
                 .options('-MultiViews')
                 .allowOverride('none')
@@ -50,13 +54,15 @@ tonto.virtualHost('*', 443, function (subDirectives) {
         .proxyPass('/ http://localhost:8080')
         .proxyPassReverse('/ http://localhost:8080')
 
-        .sslCertificateFile('/var/node/myApp/certificates/somehost_com.crt')
-        .sslKeyFile('/var/node/myApp/certificates/somehost_com.key')
-        .sslChainFile('/var/node/myApp/certificates/somehost_com_DigiCertCA.crt');
-        
+        .sslcertificateFile('/var/node/myApp/certificates/somehost_com.crt')
+        .sslkeyFile('/var/node/myApp/certificates/somehost_com.key')
+        .sslchainFile('/var/node/myApp/certificates/somehost_com_DigiCertCA.crt');
+
 });
 
-tonto.virtualHost('*', 80, function (subDirectives) {
+tonto.virtualHost('*:80', function (subDirectives) {
+
+ 'use strict';
 
     subDirectives
         .serverName('somesite.com')
@@ -64,10 +70,9 @@ tonto.virtualHost('*', 80, function (subDirectives) {
         .rewriteBase('/myapp')
         .rewriteCond('%{HTTPS off}')
         .rewriteRule('(.*) http://somesite.com%{REQUEST_URI}');
-    
+
 });
 
 var configFileContents = tonto.render();
-
 ```
                                                              

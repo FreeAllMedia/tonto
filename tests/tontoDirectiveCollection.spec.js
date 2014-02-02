@@ -56,19 +56,26 @@ describe('TontoDirectiveCollection()', function () {
 	describe('.render()', function () {
 
 		beforeEach(function () {
-			collection.push(directiveOne);
-			collection.push(directiveTwo);
+			collection.virtualHost('10.10.10.10:80', function (subDirectives) {
+				subDirectives
+					.serverName('somesite.com')
+					.directory('/some/directory/', function (directoryDirectives) {
+						directoryDirectives
+							.order('allow, deny');
+					});
+			});
 		});
 
-		it('should return all Directive strings, concatenated by two newlines', function () {
-			collection.render().should.equal('RewriteEngine On\nRewriteCond %{HTTPS} off');
+		it('should correctly render the collection to a string', function () {
+			var renderedString = collection.render();
+			renderedString.should.equal('<VirtualHost 10.10.10.10:80>\n\tServerName somesite.com\n\t<Directory /some/directory/>\n\t\tOrder allow,deny\n\t</Directory>\n</VirtualHost>');
 		});
 
 	});
 
 	describe('Dynamic Function', function () {
 
-		var directivesFilePath = path.join(__dirname, '../apacheDirectives.yml'),
+		var directivesFilePath = path.join(__dirname, './apacheDirectives.yml'),
 			directivesFileContents = fs.readFileSync(directivesFilePath).toString(),
 			apacheDirectives = yaml.load(directivesFileContents),
 			groupDirectives = apacheDirectives.filter(function (directiveName) { return (directiveName.indexOf('<') !== -1); }),
@@ -87,7 +94,9 @@ describe('TontoDirectiveCollection()', function () {
 
 			groupDirectives.forEach(function (directiveName) {
 
-				var functionName = changeCase.camelCase(directiveName.replace(/[<>]/, ''));
+				directiveName = directiveName.replace(/[<>]/g, '');
+
+				var functionName = changeCase.camelCase(directiveName);
 
 				describe(functionName + '(value, subDirectiveSetter)', function () {
 
