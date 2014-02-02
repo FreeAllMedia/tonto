@@ -1,4 +1,4 @@
-var Tonto = require('./'),
+var Tonto = require('../'),
 	tonto = new Tonto();
 
 tonto.virtualHost('*:443', function (subDirectives) {
