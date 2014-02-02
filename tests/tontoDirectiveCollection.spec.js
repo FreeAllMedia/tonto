@@ -68,7 +68,8 @@ describe('TontoDirectiveCollection()', function () {
 
 		it('should correctly render the collection to a string', function () {
 			var renderedString = collection.render();
-			renderedString.should.equal('<VirtualHost 10.10.10.10:80>\n\tServerName somesite.com\n\t<Directory /some/directory/>\n\t\tOrder allow,deny\n\t</Directory>\n</VirtualHost>');
+			console.log('\n\n\n\n'+renderedString+'\n\n\n\n');
+			renderedString.should.equal('<VirtualHost 10.10.10.10:80>\n\tServerName somesite.com\n\t<Directory /some/directory/>\n\t\tOrder allow, deny\n\t</Directory>\n</VirtualHost>');
 		});
 
 	});

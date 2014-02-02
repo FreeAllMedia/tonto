@@ -4,14 +4,14 @@ module.exports = function (grunt) {
 
 	grunt.initConfig({
 		jshint: {
-			all: ['Gruntfile.js', 'lib/*', 'tests/*'],
+			all: ['Gruntfile.js', 'lib/*.js', 'tests/*.js'],
 			options: {
 				jshintrc: './.jshintrc'
 			}
 		},
 		complexity: {
 			generic: {
-				src: ['lib/*'],
+				src: ['lib/*.js'],
 				options: {
 					breakOnErrors: true,
 					errorsOnly: false,               // show only maintainability errors

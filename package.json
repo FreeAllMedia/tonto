@@ -10,7 +10,7 @@
     }
   ],
   "scripts": {
-    "test": "mocha ./tests/* -w -R spec"
+    "test": "mocha ./tests/*.js -w -R spec"
   },
   "main": "./lib/tonto.js",
   "dependencies": {
