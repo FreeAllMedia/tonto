@@ -1,6 +1,6 @@
 ```
- _____ ___  _  _ _____ ___  
-|_   _/ _ \| \| |_   _/ _ \ 
+ _____ ___  _  _ _____ ___
+|_   _/ _ \| \| |_   _/ _ \
   | || (_) | .` | | || (_) |
   |_| \___/|_|\_| |_| \___/.JS
  APACHE CONFIG FILE GENERATOR
@@ -17,24 +17,23 @@ Because sometimes, templates either don't cut it, or you get sick of setting up 
 
 ### The Tonto Name
 
-The [Tonto (Dilzhę́’é) people](http://itcaonline.com/?page_id=1183) are one of the Western Apache groups from North America. Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors.
+The [Tonto (Dilzhę́’é) people](http://itcaonline.com/?page_id=1183) are one of the Western Apache groups from North America. Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors. Today they are know throughout art communities for their superior fine crafting.
 
 ### Use Case Examples
 
 1. Server hosts can write a deployment script with Tonto.js to easily customize apache config files for new machines.
-2. Wrap this library with your own to provide an easy interface for generating all of your project's apache configs. 
+2. Wrap this library with your own to provide an easy interface for generating all of your project's apache configs.
 3. Take your wife out for a nice steak dinner, then to a show that *she* wants to see. Tell her it was all made possible because you're smart and made time for her with Tonto.js.
 
 ## Using Tonto.js
 
 ```javascript
-
-var Tonto = require('./'),
- tonto = new Tonto();
+var Tonto = require('../'),
+	tonto = new Tonto();
 
 tonto.virtualHost('*:443', function (subDirectives) {
 
- 'use strict';
+	'use strict';
 
     subDirectives
         .serverName('somesite.com')
@@ -55,14 +54,14 @@ tonto.virtualHost('*:443', function (subDirectives) {
         .proxyPassReverse('/ http://localhost:8080')
 
         .sslcertificateFile('/var/node/myApp/certificates/somehost_com.crt')
-        .sslkeyFile('/var/node/myApp/certificates/somehost_com.key')
-        .sslchainFile('/var/node/myApp/certificates/somehost_com_DigiCertCA.crt');
+        .sslcertificateKeyFile('/var/node/myApp/certificates/somehost_com.key')
+        .sslcertificateChainFile('/var/node/myApp/certificates/somehost_com_DigiCertCA.crt');
 
 });
 
 tonto.virtualHost('*:80', function (subDirectives) {
 
- 'use strict';
+	'use strict';
 
     subDirectives
         .serverName('somesite.com')
@@ -73,6 +72,5 @@ tonto.virtualHost('*:80', function (subDirectives) {
 
 });
 
-var configFileContents = tonto.render();
+console.log(tonto.render());
 ```
-                                                             
