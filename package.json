@@ -27,7 +27,7 @@
   "config": {
     "blanket": {
       "pattern": [
-        "tonto/lib"
+        "tonto/lib/*.js"
       ]
     }
   },
