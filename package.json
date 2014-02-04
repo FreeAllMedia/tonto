@@ -14,7 +14,7 @@
     }
   ],
   "scripts": {
-    "test": "grunt travis"
+    "test": "mocha -w ./tests/*.js -R spec"
   },
   "main": "./lib/tonto.js",
   "dependencies": {
