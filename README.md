@@ -13,7 +13,7 @@
 
 ### Wait.. What? Why?!
 
-Because sometimes, templates either don't cut it, or you get sick of setting up templates. Behold: Tonto.js with support for 591 apache directives, without leaving the comfort of your Javascript couch.
+Becuase sometimes you want to generate apache config files without leaving the comfort of javascript.
 
 ### The Tonto Name
 
@@ -21,9 +21,15 @@ The [Tonto (Dilzhę́’é) people](http://itcaonline.com/?page_id=1183) are one
 
 ### Use Case Examples
 
-1. Server hosts can write a deployment script with Tonto.js to easily customize apache config files for new machines.
-2. Wrap this library with your own to provide an easy interface for generating all of your project's apache configs.
+1. Server hosts could write a deployment script with Tonto.js that easily customizes an apache config files for each new machine.
+2. Wrap Tonto.js with your own library to provide an easy interface for generating your proprietary apache configurations with arguments.
 3. Take your wife out for a nice steak dinner, then to a show that *she* wants to see. Tell her it was all made possible because you're smart and made time for her with Tonto.js.
+
+## Installation
+
+```shell
+$ npm install tonto --save
+```
 
 ## Using Tonto.js
 

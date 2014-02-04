@@ -14,7 +14,7 @@
     }
   ],
   "scripts": {
-    "test": "mocha ./tests/*.js -w -R spec"
+    "test": "mocha -w ./tests/*.js -R spec"
   },
   "main": "./lib/tonto.js",
   "dependencies": {
@@ -25,9 +25,10 @@
     "grunt-complexity": "~0.1.4"
   },
   "config": {
+  	"travis-cov": { "threshold": 100 },
     "blanket": {
       "pattern": [
-        "tonto/lib/*.js"
+        "/tonto/lib/"
       ]
     }
   },
