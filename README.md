@@ -35,13 +35,13 @@ $ npm install tonto --save
 
 ## Getting Started
 
-**1. Each instance of Tonto is a version-specific apache config **_document object_** that you add directives to by calling it's **_directive functions_**:**
+**1. Each instance of Tonto is a version-specific apache config _document object_ that you add directives to by calling it's _directive functions_:**
 
 ```javascript
 var document = new Tonto('2.4');
 ```
 
-**2. There are **_solo directive functions_** that take a single value argument, and **_block directive functions_** which take a **_sub-directive setter_** object as the second argument:**
+**2. There are _solo directive functions_ that take a single value argument, and _block directive functions_ which take a _sub-directive setter_ object as the second argument:**
 
 ```javascript
 document.serverName('somesite.com');
@@ -54,7 +54,7 @@ document.virtualHost('*:80', function (subDirectiveDocument) {
 });
 ```
 
-**3. When the **_document object_** has all directives added to it, you can render the document to string by calling:**
+**3. When the _document object_ has all directives added to it, you can render the document to string by calling:**
 
 ```javascript
 document.render();
