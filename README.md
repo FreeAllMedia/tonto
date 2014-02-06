@@ -11,7 +11,7 @@
 [![Code Climate](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/badges/8211b5ff104e1d7c1d51/gpa.png)](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/feed)
 [![Dependency Status](https://david-dm.org/FreeAllMedia/tonto.png?theme=shields.io)](https://david-dm.org/FreeAllMedia/tonto?theme=shields.io)
 
-# About Tonto.js
+# Tonto.js
 
 This library helps with automating the generation of Apache web server configuration files. It provides a native camelCased javascript function API which support all native (and native mod) configuration directives from Apache versions **2.4**, **2.2**, and **2.0**:
 
@@ -25,7 +25,7 @@ Additionally, Tonto is easily configured at instantiation to support any custom 
 
 This library is named after the [Tonto (Dilzhę́’é) people](http://itcaonline.com/?page_id=1183), who are one of the Western Apache groups from North America. Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors. Today, they are know throughout the art communities for their superior fine crafting.
 
-# Installation
+## Installation
 
 **Use NPM to install the `tonto` package into your node.js project:**
 
@@ -33,52 +33,73 @@ This library is named after the [Tonto (Dilzhę́’é) people](http://itcaonlin
 $ npm install tonto --save
 ```
 
-# Getting Started
+## Getting Started
 
-1. Each instance of Tonto is a version-specific apache config **_document object_** that you add directives to by calling it's **_directive functions_**:
-    ```javascript
-    var document = new Tonto('2.4');
-    ```
-2. There are **_solo directive functions_** that take a single value argument, and **_block directive functions_** which take a **_sub-directive setter_** object as the second argument:
-    ```javascript
-    document.serverName('somesite.com');
-    ```
-    ```javascript
-    document.virtualHost('*:80', function (subDirectiveDocument) {
-      // Here, you can call any directive function directly on subDirectiveDocument, and it will be added as a sub-directive.
-      subDirectiveDocument.serverName('somesite.com');
-    });
-    ```
-5. When the **_document object_** has all directives added to it, you can render the document to string by calling:
-    ```javascript
-    document.render();
-    ```
-6. All directives are chainable:
-    ```javascript
-    var renderedDocument = document
-      .loadModule('some_module /some/path/to/module.so')
-      .serverSignature('Off')
-      .traceEnable('Off')
-      .render();
-    ```
+**1. Each instance of Tonto is a version-specific apache config **_document object_** that you add directives to by calling it's **_directive functions_**:**
 
-# Native Apache Directive Functions
+```javascript
+var document = new Tonto('2.4');
+```
 
-## Specifying an Apache Version
+**2. There are **_solo directive functions_** that take a single value argument, and **_block directive functions_** which take a **_sub-directive setter_** object as the second argument:**
+
+```javascript
+document.serverName('somesite.com');
+```
+
+```javascript
+document.virtualHost('*:80', function (subDirectiveDocument) {
+  // Here, you can call any directive function directly on subDirectiveDocument, and it will be added as a sub-directive.
+  subDirectiveDocument.serverName('somesite.com');
+});
+```
+
+**3. When the **_document object_** has all directives added to it, you can render the document to string by calling:**
+
+```javascript
+document.render();
+```
+
+**4. All directives are chainable:**
+
+```javascript
+var renderedDocument = document
+  .loadModule('some_module /some/path/to/module.so')
+  .serverSignature('Off')
+  .traceEnable('Off')
+  .render();
+```
+
+## Directive Functions
+
+### Specifying an Apache Version
 
 Tonto.js comes with built-in support for all native (and native mod) directives in versions **2.4**, **2.2**, and **2.0**. Additionally, you can specify any number of extra directives.
 
-## Directive Function Names
+You specify which version you want to use during instantiation of the constructor:
+
+```javascript
+var twoFour = Tonto('2.4');
+Object.keys(twoFour).length; // 594
+
+var twoTwo = Tonto('2.2');
+Object.keys(twoTwo).length; // 419
+
+var twoZero = Tonto('2.0');
+Object.keys(twoZero).length; // 364
+```
+
+### Directive/Function Case Differences
 
 Whereas Apache directives are typed in **TitleCase**, tonto converts each of the directives into **camelBackCase** named functions.
 
-For example:
+**For example:**
 
   * `LoadModule` is added to the document with: `.loadModule('some_module /some/path/to/module.so')`
   * `SSLCertificateKeyFile` is added to the document with: `.sslCertificateKeyFile('/some/path/to/some_key.pem')`
   * `VirtualHost` is added to the document with: `.virtualHost('*:80', subDirectiveSetter)`
 
-## Sub-Directive Setter
+### Sub-Directive Setter
 
 Block directives require a function as the second argument. This function has one argument itself, which is a clean sub-document. You can call any directive from the main document on a sub-document.
 
@@ -100,7 +121,7 @@ This example will render:
 </VirtualHost>
 ```
 
-## Defining Custom Directives
+### Defining Custom Directives
 
 If you are using a 3rd party mod that provides custom directives, there is an easy way to extend tonto.js with custom functions for this purpose:
 
