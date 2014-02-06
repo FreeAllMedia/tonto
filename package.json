@@ -21,7 +21,7 @@
     "methodical": "0.0.x",
     "is-js": "0.1.x",
     "js-yaml": "3.0.x",
-    "change-case": "~1.0.4",
+    "change-case": "1.0.x",
     "grunt-complexity": "~0.1.4"
   },
   "config": {
