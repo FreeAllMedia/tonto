@@ -15,7 +15,8 @@
     "methodical": "0.0.x",
     "is-js": "0.1.x",
     "js-yaml": "3.2.x",
-    "change-case": "2.2.x"
+    "change-case": "2.2.x",
+    "grunt-mocha-cov": "0.4.x"
   },
   "config": {
   	"travis-cov": { "threshold": 100 },
@@ -30,7 +31,6 @@
     "should": "5.2.x",
     "sinon": "1.14.x",
     "grunt": "0.4.x",
-    "grunt-mocha-cov": "0.4.x",
     "grunt-cli": "0.1.x",
     "grunt-contrib-jshint": "0.11.x",
     "grunt-complexity": "0.3.x"
