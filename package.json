@@ -1,6 +1,6 @@
 {
   "name": "tonto",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "FreeAllMedia, LLC <fam-operations@freeallmedia.com>",
   "description": "Tonto.js: Apache Config File Generator",
   "repository": {
@@ -31,7 +31,7 @@
     "grunt": "0.4.x",
     "grunt-cli": "0.1.x",
     "grunt-complexity": "0.3.x",
-    "grunt-contrib-jshint": "0.8.x",
+    "grunt-contrib-jshint": "0.11.x",
     "grunt-mocha-cov": "0.4.x",
     "mocha": "2.2.x",
     "mocha-lcov-reporter": "0.0.x",
