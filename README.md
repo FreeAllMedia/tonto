@@ -38,17 +38,17 @@ $ npm install tonto --save
 **1. Each instance of Tonto is a version-specific apache config _document object_ that you add directives to by calling it's _directive functions_:**
 
 ```javascript
-var document = new Tonto('2.4');
+var tonto = new Tonto('2.4');
 ```
 
 **2. There are _solo directive functions_ that take a single value argument, and _block directive functions_ which take a _sub-directive setter_ object as the second argument:**
 
 ```javascript
-document.serverName('somesite.com');
+tonto.serverName('somesite.com');
 ```
 
 ```javascript
-document.virtualHost('*:80', function (subDirectiveDocument) {
+tonto.virtualHost('*:80', function (subDirectiveDocument) {
   // Here, you can call any directive function directly on subDirectiveDocument, and it will be added as a sub-directive.
   subDirectiveDocument.serverName('somesite.com');
 });
@@ -57,13 +57,13 @@ document.virtualHost('*:80', function (subDirectiveDocument) {
 **3. When the _document object_ has all directives added to it, you can render the document to string by calling:**
 
 ```javascript
-document.render();
+tonto.render();
 ```
 
 **4. All directives are chainable:**
 
 ```javascript
-var renderedDocument = document
+var renderedDocument = tonto
   .loadModule('some_module /some/path/to/module.so')
   .serverSignature('Off')
   .traceEnable('Off')
@@ -106,7 +106,7 @@ Block directives require a function as the second argument. This function has on
 Here is an example of a sub-directive setter defined as a named function:
 
 ```javascript
-document.virtualHost('*:80', subDirectiveSetter);
+tonto.virtualHost('*:80', subDirectiveSetter);
 
 function subDirectiveSetter(subDirectives) {
   subDirectives.serverName('somesite.com');
@@ -126,14 +126,14 @@ This example will render:
 If you are using a 3rd party mod that provides custom directives, there is an easy way to extend tonto.js with custom functions for this purpose:
 
 ```javascript
-document.extend([
+tonto.extend([
   'CustomDirective',
   '<CustomBlock>'
 ]);
 
-document.customDirective('some value'); // Solo directive
+tonto.customDirective('some value'); // Solo directive
 
-document.customBlock('some value', function (subDirectives) {
+tonto.customBlock('some value', function (subDirectives) {
   // Because CustomBlock is surrounded in < and >, it is processed as a block directive
 });
 ```
