@@ -1,11 +1,11 @@
 {
   "name": "tonto",
-  "version": "0.0.2",
+  "version": "0.0.1",
   "author": "FreeAllMedia, LLC <fam-operations@freeallmedia.com>",
   "description": "Tonto.js: Apache Config File Generator",
   "repository": {
-  	"type": "git",
-  	"url": "https://github.com/FreeAllMedia/tonto"
+    "type": "git",
+    "url": "https://github.com/FreeAllMedia/tonto"
   },
   "scripts": {
     "test": "mocha -w ./tests/*.js -R spec"
@@ -15,11 +15,12 @@
     "methodical": "0.0.x",
     "is-js": "0.1.x",
     "js-yaml": "3.2.x",
-    "change-case": "2.2.x",
-    "grunt-mocha-cov": "0.4.x"
+    "change-case": "2.2.x"
   },
   "config": {
-  	"travis-cov": { "threshold": 100 },
+    "travis-cov": {
+      "threshold": 100
+    },
     "blanket": {
       "pattern": [
         "/tonto/lib/"
@@ -27,13 +28,15 @@
     }
   },
   "devDependencies": {
-    "mocha": "2.2.x",
-    "should": "5.2.x",
-    "sinon": "1.14.x",
     "grunt": "0.4.x",
     "grunt-cli": "0.1.x",
-    "grunt-contrib-jshint": "0.11.x",
-    "grunt-complexity": "0.3.x"
+    "grunt-complexity": "0.3.x",
+    "grunt-contrib-jshint": "0.8.x",
+    "grunt-mocha-cov": "0.4.x",
+    "mocha": "2.2.x",
+    "mocha-lcov-reporter": "0.0.x",
+    "should": "5.2.x",
+    "sinon": "1.14.x"
   },
   "license": "GPLv3"
 }
