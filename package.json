@@ -35,8 +35,8 @@
     "grunt-mocha-cov": "0.4.x",
     "mocha": "2.2.x",
     "mocha-lcov-reporter": "0.0.x",
-    "should": "5.2.x",
-    "sinon": "1.14.x"
+    "should": "6.0.x",
+    "sinon": "1.15.x"
   },
   "license": "GPLv3"
 }
