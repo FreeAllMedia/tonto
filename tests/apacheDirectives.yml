@@ -2,3 +2,5 @@
 - Order
 - ServerName
 - <VirtualHost>
+- SSLStaplingStandardCacheTimeout
+- DBDInitSQL

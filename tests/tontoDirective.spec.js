@@ -42,7 +42,7 @@ describe('TontoDirective(name, value, directives)', function () {
 			it('should render as solo directive', function () {
 				directive.render().should.equal(name + ' ' + value);
 			});
-			
+
 		});
 
 	});

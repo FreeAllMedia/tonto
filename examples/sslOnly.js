@@ -1,9 +1,9 @@
 var Tonto = require('../'),
-	tonto = new Tonto();
+    tonto = new Tonto();
 
 tonto.virtualHost('*:443', function (subDirectives) {
 
-	'use strict';
+    'use strict';
 
     subDirectives
         .serverName('somesite.com')
@@ -31,7 +31,7 @@ tonto.virtualHost('*:443', function (subDirectives) {
 
 tonto.virtualHost('*:80', function (subDirectives) {
 
-	'use strict';
+    'use strict';
 
     subDirectives
         .serverName('somesite.com')

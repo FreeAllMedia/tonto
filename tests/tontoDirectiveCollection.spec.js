@@ -24,7 +24,6 @@ describe('TontoDirectiveCollection()', function () {
 	});
 
 	describe('.forEach(iteratorFunction)', function () {
-
 		beforeEach(function () {
 			collection.push(directiveOne);
 			collection.push(directiveTwo);
@@ -37,11 +36,9 @@ describe('TontoDirectiveCollection()', function () {
 			iteratorFunction.calledWith(directiveOne).should.equal(true);
 			iteratorFunction.calledWith(directiveTwo).should.equal(true);
 		});
-
 	});
 
 	describe('.all()', function () {
-
 		beforeEach(function () {
 			collection.push(directiveOne);
 			collection.push(directiveTwo);
@@ -50,11 +47,9 @@ describe('TontoDirectiveCollection()', function () {
 		it('should return all directives in an array', function () {
 			collection.all().should.eql([directiveOne, directiveTwo]);
 		});
-
 	});
 
 	describe('.render()', function () {
-
 		beforeEach(function () {
 			collection.virtualHost('10.10.10.10:80', function (subDirectives) {
 				subDirectives
@@ -70,7 +65,6 @@ describe('TontoDirectiveCollection()', function () {
 			var renderedString = collection.render();
 			renderedString.should.equal('<VirtualHost 10.10.10.10:80>\n\tServerName somesite.com\n\t<Directory /some/directory/>\n\t\tOrder allow, deny\n\t</Directory>\n</VirtualHost>');
 		});
-
 	});
 
 	describe('Dynamic Function', function () {
@@ -99,7 +93,6 @@ describe('TontoDirectiveCollection()', function () {
 				var functionName = changeCase.camelCase(directiveName);
 
 				describe(functionName + '(value, subDirectiveSetter)', function () {
-
 					it('should exist on the collection', function () {
 						collection.should.have.ownProperty(functionName);
 					});
@@ -110,7 +103,6 @@ describe('TontoDirectiveCollection()', function () {
 					});
 
 					describe('subDirectiveSetter(tontoDirectiveCollection)', function () {
-
 						var subDirectiveSetterSpy;
 
 						beforeEach(function () {
@@ -126,27 +118,20 @@ describe('TontoDirectiveCollection()', function () {
 							collection[functionName](value, subDirectiveSetterSpy);
 							subDirectiveSetterSpy.calledOnce.should.be.true;
 						});
-
 					});
 
 					it('should return a copy of the collection for chaining', function () {
 						collection[functionName](value, subDirectiveSetter).should.equal(collection);
 					});
-
 				});
-
 			});
-
 		});
 
 		describe('Solo Directives', function () {
-
 			soloDirectives.forEach(function (directiveName) {
-
-				var functionName = changeCase.camelCase(directiveName.replace(/[<>]/, ''));
+				var functionName = changeCase.camelCase(directiveName);
 
 				describe(functionName + '(value)', function () {
-
 					it('should exist on the collection', function () {
 						collection.should.have.ownProperty(functionName);
 					});
@@ -159,13 +144,9 @@ describe('TontoDirectiveCollection()', function () {
 					it('should return a copy of the collection for chaining', function () {
 						collection[functionName](value).should.equal(collection);
 					});
-
 				});
-
 			});
-
 		});
 
 	});
-
 });
