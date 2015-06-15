@@ -14,8 +14,8 @@
   "dependencies": {
     "methodical": "0.0.x",
     "is-js": "0.1.x",
-    "js-yaml": "3.2.x",
-    "change-case": "2.2.x"
+    "js-yaml": "3.3.x",
+    "change-case": "2.3.x"
   },
   "config": {
     "travis-cov": {
