@@ -9,6 +9,7 @@
 [![Build Status](https://travis-ci.org/FreeAllMedia/tonto.png?branch=master)](https://travis-ci.org/FreeAllMedia/tonto)
 [![Coverage Status](https://coveralls.io/repos/FreeAllMedia/tonto/badge.png?branch=master)](https://coveralls.io/r/FreeAllMedia/tonto?branch=master)
 [![Code Climate](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/badges/8211b5ff104e1d7c1d51/gpa.png)](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/feed)
+
 [![Dependency Status](https://david-dm.org/FreeAllMedia/tonto.png?theme=shields.io)](https://david-dm.org/FreeAllMedia/tonto?theme=shields.io)
 [![Dev Dependency Status](https://david-dm.org/FreeAllMedia/tonto/dev-status.svg)](https://david-dm.org/FreeAllMedia/tonto?theme=shields.io#info=devDependencies)
 

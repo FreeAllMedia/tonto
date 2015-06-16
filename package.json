@@ -1,6 +1,6 @@
 {
   "name": "tonto",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": "FreeAllMedia, LLC <fam-operations@freeallmedia.com>",
   "description": "Tonto.js: Apache Config File Generator",
   "repository": {
@@ -17,6 +17,16 @@
     "js-yaml": "3.3.x",
     "change-case": "2.3.x"
   },
+  "contributors": [
+    {
+      "name": "dcrockwell",
+      "email": "dcautomates@gmail.com"
+    },
+    {
+      "name": "paulgoggin",
+      "email": "pgoggin@gmail.com"
+    }
+  ],
   "config": {
     "travis-cov": {
       "threshold": 100
