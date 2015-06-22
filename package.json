@@ -1,6 +1,6 @@
 {
   "name": "tonto",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "author": "FreeAllMedia, LLC <fam-operations@freeallmedia.com>",
   "description": "Tonto.js: Apache Config File Generator",
   "repository": {
