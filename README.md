@@ -5,13 +5,9 @@
   |_| \___/|_|\_| |_| \___/.JS
  APACHE CONFIG FILE GENERATOR
 ```
-[![NPM version](https://badge.fury.io/js/tonto.png)](http://badge.fury.io/js/tonto)
-[![Build Status](https://travis-ci.org/FreeAllMedia/tonto.png?branch=master)](https://travis-ci.org/FreeAllMedia/tonto)
-[![Coverage Status](https://coveralls.io/repos/FreeAllMedia/tonto/badge.png?branch=master)](https://coveralls.io/r/FreeAllMedia/tonto?branch=master)
-[![Code Climate](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/badges/8211b5ff104e1d7c1d51/gpa.png)](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/feed)
+[![NPM version](https://img.shields.io/npm/v/tonto.svg)](https://www.npmjs.com/package/tonto) [![Build Status](https://travis-ci.org/FreeAllMedia/tonto.png?branch=master)](https://travis-ci.org/FreeAllMedia/tonto) [![Coverage Status](https://coveralls.io/repos/FreeAllMedia/tonto/badge.png?branch=master)](https://coveralls.io/r/FreeAllMedia/tonto?branch=master) [![Code Climate](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/badges/8211b5ff104e1d7c1d51/gpa.png)](https://codeclimate.com/repos/52eb567fe30ba03a3200228b/feed)
 
-[![Dependency Status](https://david-dm.org/FreeAllMedia/tonto.png?theme=shields.io)](https://david-dm.org/FreeAllMedia/tonto?theme=shields.io)
-[![Dev Dependency Status](https://david-dm.org/FreeAllMedia/tonto/dev-status.svg)](https://david-dm.org/FreeAllMedia/tonto?theme=shields.io#info=devDependencies)
+[![Dependency Status](https://david-dm.org/FreeAllMedia/tonto.png?theme=shields.io)](https://david-dm.org/FreeAllMedia/tonto?theme=shields.io) [![Dev Dependency Status](https://david-dm.org/FreeAllMedia/tonto/dev-status.svg)](https://david-dm.org/FreeAllMedia/tonto?theme=shields.io#info=devDependencies)
 
 # Tonto.js
 
@@ -25,7 +21,9 @@ Additionally, Tonto is easily configured at instantiation to support any custom 
 
 ## The Name "Tonto"
 
-This library is named after the [Tonto (Dilzhę́’é) people](http://itcaonline.com/?page_id=1183), who are one of the Western Apache groups from North America. Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors. Today, they are know throughout the art communities for their superior fine crafting.
+This library is named after the [Tonto (Dilzhę́’é) people](http://itcaonline.com/?page_id=1183), who are one of the Western Apache groups in North America.
+
+Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors. Today, they are know throughout art communities for their superior fine crafts.
 
 ## Installation
 
