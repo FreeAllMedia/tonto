@@ -23,7 +23,7 @@ Additionally, Tonto is easily configured at instantiation to support any custom 
 
 This library is named after the [Tonto (Dilzhę́’é) people](http://itcaonline.com/?page_id=1183), who are one of the Western Apache groups in North America.
 
-Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors. Today, they are know throughout art communities for their superior fine crafts.
+Long ago, their enemies called them "foolish", "wild", "crazy", and "those who you don't understand" for speaking and doing things differently than their neighbors. Today, they are known throughout the art communities for their superior fine crafts.
 
 ## Installation
 
